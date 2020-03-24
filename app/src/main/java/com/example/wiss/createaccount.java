@@ -50,6 +50,7 @@ public class createaccount extends AppCompatActivity {
         mRegister= findViewById(R.id.register);
 
         fAuth = FirebaseAuth.getInstance();
+        fStore = FirebaseFirestore.getInstance();
         progressBar = findViewById(R.id.progressBar);
 
         if(fAuth.getCurrentUser() != null){
@@ -85,6 +86,10 @@ public class createaccount extends AppCompatActivity {
                     return;
                 }
 
+                if(!(mAge.length() <=3 && mAge.length() > 0)){
+                    mAge.setError("provide correct age");
+                    return;
+                }
                 progressBar.setVisibility(View.VISIBLE);
                 //registering
 
@@ -103,7 +108,7 @@ public class createaccount extends AppCompatActivity {
                             documentReference.set(user).addOnSuccessListener(new OnSuccessListener<Void>() {
                                 @Override
                                 public void onSuccess(Void aVoid) {
-                                    Toast.makeText(createaccount.this, "Details Inserted.", Toast.LENGTH_SHORT).show();
+                                    Toast.makeText(createaccount.this, "Details Inserted. Welcome User"+userId, Toast.LENGTH_SHORT).show();
 
                                 }
                             });
