@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "475780325343",
+    "firebase_url": "https://wiss-e1e0b.firebaseio.com",
+    "project_id": "wiss-e1e0b",
+    "storage_bucket": "wiss-e1e0b.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:475780325343:android:11e1e69b776a28aeefae6a",
+        "android_client_info": {
+          "package_name": "com.example.wiss"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "475780325343-2hnobmmu6useq59d0jsemed92nn50s3d.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.wiss",
+            "certificate_hash": "142d6c337a07ea58c9488503d599c74ab12cdce2"
+          }
+        },
+        {
+          "client_id": "475780325343-7un24r1f7rkqcee0mk4hkjcm7st8n3fq.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAtNE7p3dbSpsdo3DmXSL0PjxYQNucEmFo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "475780325343-7un24r1f7rkqcee0mk4hkjcm7st8n3fq.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
