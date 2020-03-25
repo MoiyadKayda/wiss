@@ -120,7 +120,7 @@ public class createaccount extends AppCompatActivity {
                             documentReference.set(user).addOnSuccessListener(new OnSuccessListener<Void>() {
                                 @Override
                                 public void onSuccess(Void aVoid) {
-                                    Toast.makeText(createaccount.this, "Details Inserted.", Toast.LENGTH_SHORT).show();
+                                    Toast.makeText(createaccount.this, "Details Inserted.", Toast.LENGTH_LONG).show();
 
                                 }
                             });
