@@ -70,4 +70,8 @@ public class login extends AppCompatActivity {
                 });
 
     }
+
+    public void registerUser(View view){
+        startActivity(new Intent(getApplicationContext() , createaccount.class));
+    }
 }

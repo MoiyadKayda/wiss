@@ -67,4 +67,15 @@
         app:layout_constraintTop_toBottomOf="@+id/imageView6"
         app:layout_constraintVertical_bias="0.12" />
 
+    <TextView
+        android:id="@+id/register"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="70dp"
+        android:layout_marginEnd="33dp"
+        android:onClick="registerUser"
+        android:text="Create Account"
+        app:layout_constraintEnd_toEndOf="@+id/login"
+        app:layout_constraintTop_toBottomOf="@+id/login" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
