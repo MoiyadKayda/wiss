@@ -15,11 +15,13 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.material.tabs.TabLayout;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 
@@ -50,6 +52,7 @@ public class createaccount extends AppCompatActivity {
         mRegister= findViewById(R.id.register);
 
         fAuth = FirebaseAuth.getInstance();
+        fStore = FirebaseFirestore.getInstance();
         progressBar = findViewById(R.id.progressBar);
 
         if(fAuth.getCurrentUser() != null){
@@ -92,6 +95,20 @@ public class createaccount extends AppCompatActivity {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if(task.isSuccessful()){
+                            FirebaseUser vUser = fAuth.getCurrentUser();
+                            ((FirebaseUser) vUser).sendEmailVerification().addOnSuccessListener(new OnSuccessListener<Void>() {
+                                @Override
+                                public void onSuccess(Void aVoid) {
+                                    Toast.makeText(createaccount.this, "Verification Email has been sent, Check mail", Toast.LENGTH_SHORT).show();
+                                }
+                            }).addOnFailureListener(new OnFailureListener() {
+                                @Override
+                                public void onFailure(@NonNull Exception e) {
+                                    Toast.makeText(createaccount.this, "Failure!!", Toast.LENGTH_SHORT).show();
+                                }
+                            });
+
+
                             Toast.makeText(createaccount.this, "User Created.", Toast.LENGTH_SHORT).show();
                             userId = fAuth.getCurrentUser().getUid();
                             DocumentReference documentReference = fStore.collection("usersDetails").document(userId);
@@ -123,7 +140,7 @@ public class createaccount extends AppCompatActivity {
     }
 
     public void login(View view){
-        startActivity(new Intent(getApplicationContext(),login.class));
+        startActivity(new Intent(getApplicationContext(),dashboard.class));
     }
 }
 
