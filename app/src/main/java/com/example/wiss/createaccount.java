@@ -56,7 +56,7 @@ public class createaccount extends AppCompatActivity {
         progressBar = findViewById(R.id.progressBar);
 
         if(fAuth.getCurrentUser() != null){
-            startActivity(new Intent(getApplicationContext(),dashboard.class));
+            startActivity(new Intent(getApplicationContext(),login.class));
             finish();
         }
 
@@ -124,7 +124,7 @@ public class createaccount extends AppCompatActivity {
 
                                 }
                             });
-                            startActivity(new Intent(getApplicationContext(),dashboard.class));
+                            startActivity(new Intent(getApplicationContext(),login.class));
                         }else{
                             Toast.makeText(createaccount.this, "Error!!"+task.getException().getMessage(), Toast.LENGTH_SHORT).show();
                             progressBar.setVisibility(View.GONE);
