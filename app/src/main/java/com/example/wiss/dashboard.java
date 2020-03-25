@@ -61,7 +61,7 @@ public class dashboard extends AppCompatActivity {
             });
 
         }else{
-            Toast.makeText(this , "Email verified." , Toast.LENGTH_LONG);
+            Toast.makeText(this , "Email verified." , Toast.LENGTH_LONG).show();
             verifyMsg.setVisibility(View.GONE);
             resendCode.setVisibility(View.GONE);
         }
