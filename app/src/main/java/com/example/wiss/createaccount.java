@@ -140,7 +140,7 @@ public class createaccount extends AppCompatActivity {
     }
 
     public void login(View view){
-        startActivity(new Intent(getApplicationContext(),dashboard.class));
+        startActivity(new Intent(getApplicationContext(),login.class));
     }
 }
 

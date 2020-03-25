@@ -42,6 +42,10 @@ public class login extends AppCompatActivity {
             passText.setError("Password field is empty");
             return;
         }
+        if(mailText.length() == 0) {
+            mailText.setError("Email field is empty");
+            return;
+        }
         mAuth.signInWithEmailAndPassword(mailText.getText().toString(), passText.getText().toString())
                 .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
 
