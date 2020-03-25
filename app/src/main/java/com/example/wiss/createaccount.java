@@ -15,13 +15,11 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.material.tabs.TabLayout;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 
@@ -38,12 +36,10 @@ public class createaccount extends AppCompatActivity {
     FirebaseFirestore fStore;
     String userId;
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_createaccount);
-
 
         mName = findViewById(R.id.name);
         mEmail = findViewById(R.id.email);
@@ -54,7 +50,6 @@ public class createaccount extends AppCompatActivity {
         mRegister= findViewById(R.id.register);
 
         fAuth = FirebaseAuth.getInstance();
-        fStore = FirebaseFirestore.getInstance();
         progressBar = findViewById(R.id.progressBar);
 
         if(fAuth.getCurrentUser() != null){
@@ -97,21 +92,6 @@ public class createaccount extends AppCompatActivity {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if(task.isSuccessful()){
-
-                            FirebaseUser vUser = fAuth.getCurrentUser();
-                            vUser.sendEmailVerification().addOnSuccessListener(new OnSuccessListener<Void>() {
-                                @Override
-                                public void onSuccess(Void aVoid) {
-                                    Toast.makeText(createaccount.this, "Verification Email has been sent, Check mail", Toast.LENGTH_SHORT).show();
-                                }
-                            }).addOnFailureListener(new OnFailureListener() {
-                                @Override
-                                public void onFailure(@NonNull Exception e) {
-                                    Toast.makeText(createaccount.this, "Failure!!", Toast.LENGTH_SHORT).show();
-                                }
-                            });
-
-
                             Toast.makeText(createaccount.this, "User Created.", Toast.LENGTH_SHORT).show();
                             userId = fAuth.getCurrentUser().getUid();
                             DocumentReference documentReference = fStore.collection("usersDetails").document(userId);
@@ -123,12 +103,8 @@ public class createaccount extends AppCompatActivity {
                             documentReference.set(user).addOnSuccessListener(new OnSuccessListener<Void>() {
                                 @Override
                                 public void onSuccess(Void aVoid) {
-                                    Toast.makeText(createaccount.this, "Details Inserted. Welcome User"+userId, Toast.LENGTH_SHORT).show();
-                                }
-                            }).addOnFailureListener(new OnFailureListener() {
-                                @Override
-                                public void onFailure(@NonNull Exception e) {
-                                    Toast.makeText(createaccount.this, "Failure Occured", Toast.LENGTH_SHORT).show();
+                                    Toast.makeText(createaccount.this, "Details Inserted.", Toast.LENGTH_SHORT).show();
+
                                 }
                             });
                             startActivity(new Intent(getApplicationContext(),dashboard.class));
