@@ -9,6 +9,7 @@ import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -20,6 +21,7 @@ import com.google.firebase.auth.FirebaseUser;
 public class login extends AppCompatActivity {
 
     EditText mailText , passText;
+    TextView createaccount;
     FirebaseAuth fAuth;
     private FirebaseAuth mAuth;
 
@@ -31,6 +33,7 @@ public class login extends AppCompatActivity {
         mailText = findViewById(R.id.mailEditText);
         passText = findViewById(R.id.passEditText);
         fAuth = FirebaseAuth.getInstance();
+        createaccount = findViewById(R.id.register);
 // ...
 // Initialize Firebase Auth
         mAuth = FirebaseAuth.getInstance();
@@ -55,7 +58,7 @@ public class login extends AppCompatActivity {
                             // Sign in success, update UI with the signed-in user's information
                             Log.d("TAG", "signInWithEmail:success");
                             FirebaseUser user = mAuth.getCurrentUser();
-                            startActivity(new Intent(getApplicationContext(), login.class));
+                            startActivity(new Intent(getApplicationContext(), dashboard.class));
                         } else {
                             // If sign in fails, display a message to the user.
                             Log.w("TAG", "signInWithEmail:failure", task.getException());

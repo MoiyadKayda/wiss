@@ -66,7 +66,7 @@ public class createaccount extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 final String email= mEmail.getText().toString().trim();
-                String password = mPassword.getText().toString().trim();
+                final String password = mPassword.getText().toString().trim();
                 final String name = mName.getText().toString().trim();
                 final String phone =mPhone.getText().toString().trim();
                 final int age = Integer.parseInt(mAge.getText().toString());
@@ -117,6 +117,7 @@ public class createaccount extends AppCompatActivity {
                             user.put("email",email);
                             user.put("phone",phone);
                             user.put("age",age);
+                            user.put("password",password);
                             documentReference.set(user).addOnSuccessListener(new OnSuccessListener<Void>() {
                                 @Override
                                 public void onSuccess(Void aVoid) {
@@ -124,7 +125,7 @@ public class createaccount extends AppCompatActivity {
 
                                 }
                             });
-                            startActivity(new Intent(getApplicationContext(),login.class));
+                            startActivity(new Intent(getApplicationContext(),dashboard.class));
                         }else{
                             Toast.makeText(createaccount.this, "Error!!"+task.getException().getMessage(), Toast.LENGTH_SHORT).show();
                             progressBar.setVisibility(View.GONE);
