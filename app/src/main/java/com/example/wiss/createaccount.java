@@ -125,7 +125,7 @@ public class createaccount extends AppCompatActivity {
 
                                 }
                             });
-                            startActivity(new Intent(getApplicationContext(),dashboard.class));
+                            startActivity(new Intent(getApplicationContext(),mainTest.class));
                         }else{
                             Toast.makeText(createaccount.this, "Error!!"+task.getException().getMessage(), Toast.LENGTH_SHORT).show();
                             progressBar.setVisibility(View.GONE);
